@@ -24,8 +24,8 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @since: 2024-06-15
  * @version: 1.0.0
  */
-@RestController(value ="CustomerController")
-@RequestMapping("/customer")
+@RestController(value ="UserController")
+@RequestMapping("/user")
 @RequiredArgsConstructor
 public class UserController {
 

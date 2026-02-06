@@ -4,10 +4,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import com.exercise.backend.dto.ApiResponseDto;
+import com.exercise.backend.utils.ResponseCode;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.log4j.Log4j2;
@@ -24,14 +26,19 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(TimeConectionException.class)
     public ResponseEntity<ApiResponseDto> handleBusinessException(TimeConectionException ex, WebRequest request) {
-        return buildResponse(ex.getCode(), ex.getType(),ex.getDetails(),HttpStatus.INTERNAL_SERVER_ERROR);
+        return buildResponse(ex.getCode(),
+         ex.getType(),
+         ex.getDetails(),
+         HttpStatus.GATEWAY_TIMEOUT);
     }  
 
-    
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiResponseDto> handleGeneralException(Exception ex, HttpServletRequest request) {
         ex.printStackTrace();
-        return buildResponse("INTERNAL_ERROR", "Error interno del servidor", "Ocurrió un error inesperado", HttpStatus.INTERNAL_SERVER_ERROR);
+        return buildResponse(ResponseCode.TIME_CONNECTION_ERROR.getCode(),
+         ResponseCode.TIME_CONNECTION_ERROR.getType(),
+          ResponseCode.TIME_CONNECTION_ERROR.getMessage(),
+           HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     private ResponseEntity<ApiResponseDto> buildResponse(String code, String type, String details, HttpStatus status) {

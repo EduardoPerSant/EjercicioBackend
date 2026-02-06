@@ -14,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 public class UserService {
     
     private final UserServiceRemoto userServiceRemoto;
+    
 
     /**
      * Method to get all users from remote microservice.

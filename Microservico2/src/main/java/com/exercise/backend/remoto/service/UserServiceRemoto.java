@@ -2,15 +2,25 @@ package com.exercise.backend.remoto.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import com.exercise.backend.configuration.FeignConfig;
 import com.exercise.backend.exception.TimeConectionException;
 import com.exercise.backend.remoto.dto.UserDto;
 import com.exercise.backend.remoto.repository.UserRepositoryRemoto;
+import com.exercise.backend.utils.Constants;
 import com.exercise.backend.utils.ResponseCode;
 
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
-import io.github.resilience4j.timelimiter.annotation.TimeLimiter;
 import lombok.extern.log4j.Log4j2;
 
 /**
@@ -33,20 +43,21 @@ public class UserServiceRemoto {
      * Method to get all users from remote microservice.
      * @return List<UserDto>
      */
-    @CircuitBreaker( fallbackMethod = "getAllUsersFallback", name = "userService")
-    @TimeLimiter(name = "userService")
-    public List<UserDto> getAllUsers(Boolean sleep) {   
-        log.info("Fetching all users from remote microservice");
+    @CircuitBreaker(name = "userService",
+     fallbackMethod = "getAllUsersFallback")
+    public List<UserDto> getAllUsers(Boolean sleep) {
         return userRepositoryRemoto.findAllCustomers(sleep);
     }
+
 
     /**
      * Fallback method for getAllUsers in case of failure.
      * @return List<UserDto>
      */
-public List<UserDto> getAllUsersFallback(Boolean sleep, Throwable ex) {
-    log.error("Timeout o error llamando al microservicio: {}", ex.getMessage(), ex);
-    throw new TimeConectionException(ResponseCode.TIME_CONNECTION_ERROR);
-}
+    public List<UserDto> getAllUsersFallback(Boolean sleep, Throwable ex) {
+        log.error("Timeout o error llamando al microservicio: {}", ex.getMessage(), ex);
+        log.error("TIPO REAL DE EXCEPCION: {}", ex.getClass().getName());
+        throw new TimeConectionException(ResponseCode.TIME_CONNECTION_ERROR);
+    }
 
 }

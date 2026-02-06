@@ -5,22 +5,20 @@ spring:
   application:
     name: segundo
 
-  cloud:
-    openfeign:
-      circuitbreaker:
-        enabled: true
-      client:
-        config:
-          default:
-            connectTimeout: 5000
-            readTimeout: 5000
-
 resilience4j:
   circuitbreaker:
     instances:
       userService:
         slidingWindowSize: 10
         failureRateThreshold: 50
+rest:
+  timeout:
+    connect: 3
+    request: 3
+    response: 5
+    socket: 5
 
 microservicio-uno:
-  uri: http://localhost:8090
+  uri: http://localhost:8092
+  endpoint:
+    findAll: /user/find-all

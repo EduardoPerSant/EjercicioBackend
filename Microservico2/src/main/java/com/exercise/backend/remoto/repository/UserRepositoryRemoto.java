@@ -6,6 +6,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 
+import com.exercise.backend.configuration.FeignConfig;
 import com.exercise.backend.remoto.dto.UserDto;
 
 /**
@@ -16,11 +17,12 @@ import com.exercise.backend.remoto.dto.UserDto;
  */
 @FeignClient(
     name = "microservicio-uno",
-    url = "${microservicio-uno.uri}"
+    url = "${microservicio-uno.uri}",
+    configuration = FeignConfig.class
 )
 public interface UserRepositoryRemoto{
 
-    @GetMapping(value = "/customer/find-all")
-    List<UserDto> findAllCustomers(@RequestHeader Boolean sleep);
+    @GetMapping(value = "/user/find-all")
+    List<UserDto> findAllCustomers(@RequestHeader("sleep") Boolean sleep);
     
 }
