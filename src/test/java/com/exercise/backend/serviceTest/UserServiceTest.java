@@ -3,6 +3,7 @@ package com.exercise.backend.serviceTest;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
@@ -31,17 +32,15 @@ class UserServiceTest {
     private UserService userService;
 
     private User testUser;
-    private UserModel testUserModel;
-
+    String customerName;
     @BeforeEach
     void setUp() {
+        customerName = "abcdefg1";
         testUser = new User("testuser", LocalDateTime.now());
-        testUserModel = new UserModel(testUser);
     }
 
     @Test
     void testSaveCustomerSuccess() {
-        String customerName = "abcdefg1";
         when(userRepository.findByCustomerName(customerName)).thenReturn(null);
         when(userRepository.findAll()).thenReturn(Arrays.asList());
         when(userRepository.save(any(User.class))).thenReturn(testUser);
@@ -59,7 +58,6 @@ class UserServiceTest {
 
     @Test
     void testSaveCustomerAlreadyExists() {
-        String customerName = "existinguser";
         when(userRepository.findByCustomerName(customerName)).thenReturn(testUser);
 
         assertThrows(BusinessException.class, () -> userService.saveCustomer(customerName));
@@ -67,8 +65,10 @@ class UserServiceTest {
 
     @Test
     void testSaveCustomerLimitReached() {
-        String customerName = "validuser";
-        List<User> customers = Arrays.asList(testUser, testUser, testUser);
+        List<User> customers = new ArrayList<>();
+        for(int i = 0; i < Constants.CUSTOMER_LIMIT; i++) {
+            customers.add(testUser);
+        }
         when(userRepository.findByCustomerName(customerName)).thenReturn(null);
         when(userRepository.findAll()).thenReturn(customers);
 
@@ -77,7 +77,6 @@ class UserServiceTest {
 
     @Test
     void testGetCustomerByNameSuccess() {
-        String customerName = "testuser";
         when(userRepository.findByCustomerName(customerName)).thenReturn(testUser);
 
         UserModel result = userService.getCustomerByName(customerName);
@@ -88,7 +87,6 @@ class UserServiceTest {
 
     @Test
     void testGetCustomerByNameNotFound() {
-        String customerName = "nonexistent";
         when(userRepository.findByCustomerName(customerName)).thenReturn(null);
 
         UserModel result = userService.getCustomerByName(customerName);
@@ -101,7 +99,7 @@ class UserServiceTest {
         List<User> customers = Arrays.asList(testUser, testUser);
         when(userRepository.findAll()).thenReturn(customers);
 
-        List<User> result = userService.getAllCustomers();
+        List<UserModel> result = userService.getAllCustomers(false);
 
         assertEquals(2, result.size());
         verify(userRepository).findAll();
@@ -109,19 +107,16 @@ class UserServiceTest {
 
     @Test
     void testGetOutCustomerByNameNotFound() {
-        String customerName = "nonexistent";
         when(userRepository.findByCustomerName(customerName)).thenReturn(null);
-
-        String result = userService.getOutCustomerByName(customerName);
-
-        assertEquals(Constants.MESSAGE_USER_GET_OUT, result);
+        assertThrows(BusinessException.class, () -> userService.getOutCustomerByName(customerName));
     }
 
     @Test
     void testGetOutCustomerByNameExists() {
-        String customerName = "testuser";
         when(userRepository.findByCustomerName(customerName)).thenReturn(testUser);
-
-        assertThrows(BusinessException.class, () -> userService.getOutCustomerByName(customerName));
+        String result = userService.getOutCustomerByName(customerName);
+        assertEquals(Constants.MESSAGE_USER_GET_OUT, result);
     }
+
+
 }

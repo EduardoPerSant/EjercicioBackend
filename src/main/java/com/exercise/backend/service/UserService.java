@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.exercise.backend.domain.entity.User;
 import com.exercise.backend.domain.repository.UserRepository;
@@ -33,7 +32,7 @@ public class UserService {
     /**
      * Method to save a customer.
      * @param customerName
-     * @return
+     * @return { @link UserModel }
      */
     public UserModel saveCustomer(String customerName) {
 
@@ -59,6 +58,11 @@ public class UserService {
 
     }
 
+    /**
+     * Method to get a customer by name.
+     * @param customerName
+     * @return { @link UserModel }
+     */
     public UserModel getCustomerByName(String customerName) {
         log.info("Se consulta el cliente con nombre {}",customerName);
         User customer = customerRepository.findByCustomerName(customerName);
@@ -69,17 +73,36 @@ public class UserService {
         return null;
     }
 
-    public List<User> getAllCustomers() {
-        return customerRepository.findAll();
+    /**
+     * Method to get all customers.
+     * @param isTimeHeaderPresent
+     * @return { @link List<UserModel> }
+     */
+    public List<UserModel> getAllCustomers(Boolean isTimeHeaderPresent) {
+        if (Boolean.TRUE.equals(isTimeHeaderPresent)) {
+            log.info("Esperando {} ms antes de consultar la BD...", Constants.SECONDS_TO_SLEEP);
+            Utils.sleepByTime(Constants.SECONDS_TO_SLEEP);
+        }
+
+        return customerRepository.findAll()
+                .stream()
+                .map(UserModel::new)
+                .toList();
     }
 
+   /**
+    * Method to get out a customer by name.
+    * @param customerName
+    * @return { @link String }
+    */
     public String getOutCustomerByName(String customerName) {
         log.info("Se consulta el cliente con nombre {}",customerName);
         User customer = customerRepository.findByCustomerName(customerName);
 
-        if (customer != null) {
+        if (customer == null) {
              throw new BusinessException(ResponseCode.USER_NOT_FOUND);
         }
+        customerRepository.deleteByCustomerName(customerName);
         return Constants.MESSAGE_USER_GET_OUT;
     }
 

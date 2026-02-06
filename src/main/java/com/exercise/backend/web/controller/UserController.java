@@ -8,10 +8,13 @@ import com.exercise.backend.web.model.UserModel;
 
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -44,8 +47,20 @@ public class UserController {
      * @return
      */
     @GetMapping()
-    public UserModel getCustomerByName(@RequestParam("nombre") String customerName) {
-        return customerService.getCustomerByName(customerName);
+    public ResponseEntity<UserModel> getCustomerByName(@RequestParam("nombre") String customerName) {
+        return ResponseEntity.ok(customerService.getCustomerByName(customerName));
+
     }
+
+    @PostMapping("/get-out")
+    public ResponseEntity<String> getOutUser(@RequestBody UserModel model) {
+        return ResponseEntity.ok(customerService.getOutCustomerByName(model.getCustomerName()));
+    }
+    
+    @GetMapping("/find-all")
+    public ResponseEntity<List<UserModel>> getMethodName(@RequestHeader(value ="sleep", required = false) Boolean sleepBoolean) {
+        return ResponseEntity.ok(customerService.getAllCustomers(sleepBoolean));
+    }
+    
 
 }

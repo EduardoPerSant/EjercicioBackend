@@ -1,5 +1,10 @@
 package com.exercise.backend.utils;
 
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
 import lombok.NoArgsConstructor;
 
 /**
@@ -16,7 +21,28 @@ public class Utils {
      * @param str
      * @return
      */
-    public static boolean isAlphanumericWithSpecificSize(String str, Integer size) {
-        return str != null && str.matches("^(?=.*[A-Za-z])(?=.*\\d).+$") && str.length() == size;
+    public static Boolean isAlphanumericWithSpecificSize(String str, Integer size) {
+        return str != null && str.matches(Constants.REGEX_STRING_ALPHANUMERIC) && str.length() == size;
+    }
+
+    /**
+     * Method to sleep the thread for a specific time defined in Constants.
+     * This method uses a Timer to schedule a task after the specified time, simulating a delay in processing.
+     */
+    public static void sleepByTime(Integer timeToSleep) {
+        
+        ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
+
+        try {
+            scheduler.schedule(() -> {
+            }, timeToSleep, TimeUnit.SECONDS).get(); //
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new IllegalStateException("Hilo interrumpido durante la espera", e);
+        } catch (ExecutionException e) {
+            throw new IllegalStateException("Error al esperar el tiempo programado", e);
+        } finally {
+            scheduler.shutdown();
+        }
     }
 }

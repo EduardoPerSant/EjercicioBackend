@@ -17,4 +17,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     public User findByCustomerName(String customerName);
 
     public List<User> findAll();
+
+    public User deleteByCustomerName(String customerName);
 }
