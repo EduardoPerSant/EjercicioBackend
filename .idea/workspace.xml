@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5b11f74d-b74d-4a9a-8325-49042f70c313" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Microservicio1/src/main/java/com/exercise/backend/dto/ApiResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Microservicio1/src/main/java/com/exercise/backend/dto/ApiResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Microservicio1/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Microservicio1/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Microservico2/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Microservico2/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Microservico2/src/main/java/com/exercise/backend/SegundoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Microservico2/src/main/java/com/exercise/backend/SegundoApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Microservico2/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Microservico2/src/main/resources/application.yaml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="39Hbv9mAUaYXy0jl5FMSRksBDXJ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.UserServiceTest.testGetAllCustomers.executor": "Run",
+    "JUnit.UserServiceTest.testGetCustomerByNameNotFound.executor": "Run",
+    "JUnit.UserServiceTest.testGetCustomerByNameSuccess.executor": "Run",
+    "JUnit.UserServiceTest.testGetOutCustomerByNameExists.executor": "Run",
+    "JUnit.UserServiceTest.testGetOutCustomerByNameNotFound.executor": "Run",
+    "JUnit.UserServiceTest.testSaveCustomerAlreadyExists.executor": "Run",
+    "JUnit.UserServiceTest.testSaveCustomerInvalidName.executor": "Run",
+    "JUnit.UserServiceTest.testSaveCustomerLimitReached.executor": "Run",
+    "JUnit.UserServiceTest.testSaveCustomerSuccess.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/User/Documentos/Projects/Develop/Microservice/EjercicioBackend",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="JUnit.UserServiceTest.testGetOutCustomerByNameExists">
+    <configuration name="UserServiceTest.testGetAllCustomers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.exercise.backend.serviceTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.exercise.backend.serviceTest" />
+      <option name="MAIN_CLASS_NAME" value="com.exercise.backend.serviceTest.UserServiceTest" />
+      <option name="METHOD_NAME" value="testGetAllCustomers" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceTest.testGetCustomerByNameNotFound" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.exercise.backend.serviceTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.exercise.backend.serviceTest" />
+      <option name="MAIN_CLASS_NAME" value="com.exercise.backend.serviceTest.UserServiceTest" />
+      <option name="METHOD_NAME" value="testGetCustomerByNameNotFound" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceTest.testGetCustomerByNameSuccess" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.exercise.backend.serviceTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.exercise.backend.serviceTest" />
+      <option name="MAIN_CLASS_NAME" value="com.exercise.backend.serviceTest.UserServiceTest" />
+      <option name="METHOD_NAME" value="testGetCustomerByNameSuccess" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceTest.testGetOutCustomerByNameExists" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.exercise.backend.serviceTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.exercise.backend.serviceTest" />
+      <option name="MAIN_CLASS_NAME" value="com.exercise.backend.serviceTest.UserServiceTest" />
+      <option name="METHOD_NAME" value="testGetOutCustomerByNameExists" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceTest.testGetOutCustomerByNameNotFound" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.exercise.backend.serviceTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.exercise.backend.serviceTest" />
+      <option name="MAIN_CLASS_NAME" value="com.exercise.backend.serviceTest.UserServiceTest" />
+      <option name="METHOD_NAME" value="testGetOutCustomerByNameNotFound" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.UserServiceTest.testGetOutCustomerByNameExists" />
+        <item itemvalue="JUnit.UserServiceTest.testGetOutCustomerByNameNotFound" />
+        <item itemvalue="JUnit.UserServiceTest.testGetAllCustomers" />
+        <item itemvalue="JUnit.UserServiceTest.testGetCustomerByNameNotFound" />
+        <item itemvalue="JUnit.UserServiceTest.testGetCustomerByNameSuccess" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.25557.131" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5b11f74d-b74d-4a9a-8325-49042f70c313" name="Changes" comment="" />
+      <created>1770356171655</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1770356171655</updated>
+      <workItem from="1770356172467" duration="16000" />
+    </task>
+    <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/exercise/backend/service/UserService.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/exercise/backend/service/UserService.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/test/java/com/exercise/backend/serviceTest/UserServiceTest.java</url>
+          <line>108</line>
+          <properties class="com.exercise.backend.serviceTest.UserServiceTest" method="testGetOutCustomerByNameNotFound">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
