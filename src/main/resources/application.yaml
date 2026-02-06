@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: eduardo
+  datasource:
+    url: jdbc:h2:mem:testdbc
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    show-sql: true
