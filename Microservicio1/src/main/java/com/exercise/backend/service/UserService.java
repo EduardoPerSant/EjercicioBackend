@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.exercise.backend.domain.entity.User;
 import com.exercise.backend.domain.repository.UserRepository;
@@ -95,6 +96,7 @@ public class UserService {
     * @param customerName
     * @return { @link String }
     */
+   @Transactional(readOnly = false)
     public String getOutCustomerByName(String customerName) {
         log.info("Se consulta el cliente con nombre {}",customerName);
         User customer = customerRepository.findByCustomerName(customerName);

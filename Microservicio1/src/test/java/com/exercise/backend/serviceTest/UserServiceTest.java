@@ -53,7 +53,7 @@ class UserServiceTest {
 
     @Test
     void testSaveCustomerInvalidName() {
-        assertThrows(BusinessException.class, () -> userService.saveCustomer(""));
+        assertThrows(BusinessException.class, () -> userService.saveCustomer("dfs"));
     }
 
     @Test
